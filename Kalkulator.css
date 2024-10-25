@@ -5,6 +5,8 @@ body {
     text-align: center;
     display: flex;
     justify-content: center;
+    height: 100vh;
+    align-items: center;
 }
 div {
     /* border: solid 1px red; */
@@ -12,7 +14,8 @@ div {
 #Kalkulator {
     border: solid 1px #ccc;
     padding: 10px;
-    background: linear-gradient(#ccf, #88f);
+    background: linear-gradient(rgb(164, 16, 223), rgb(251, 255, 197));
+
     color: black;
     min-width: 200px;
 }
@@ -24,28 +27,20 @@ div {
 }
 .wrapper div {
     width: 100%;
-    background: darkblue;
     padding: 5px 10px;
 }
-#btn-hitung, #bg-green {
+#btn-hitung {
     font-size: 22px;
-    background: #00B050;
 }
 #Hasil {
     font-size: 22px;
 }
-#Hasil, #bg-abu {
+#Hasil {
     background: #D0D0D0;
 }
 #operasi-temporer{
     font-size: 9px;
 }
-
-#bg-red {background: #C00000;}
-#bg-dark-brown {background: #4A452A;}
-#bg-brown {background: #974806;}
-#bg-dark-blue {background: #376091;}
-#bg-purpel {background: #7030A0;}
 
 #judul {
     padding: 10px 0;
@@ -66,6 +61,14 @@ div {
     background: linear-gradient(#fcf, #f0f);
     transform: scale(1.1);
 }
-.bg-red {
-    background: red;
+
+.bg-green {background: #00B050;}
+.bg-dark-brown {background: #4A452A;}
+.bg-brown {background: #974806;}
+.bg-dark-blue {background: #376091;}
+.bg-purpel {background: #7030A0;}
+.bg-red {background: #C00000;}
+
+.tombol-nonaktif {
+    box-shadow: none !important;
 }
