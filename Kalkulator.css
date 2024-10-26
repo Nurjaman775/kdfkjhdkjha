@@ -1,5 +1,5 @@
 body {
-    background: black;
+    background: linear-gradient(rgb(164,10,222), #C00000);
     color: white;
     font-size: 11px;
     text-align: center;
@@ -15,7 +15,6 @@ div {
     border: solid 1px #ccc;
     padding: 10px;
     background: linear-gradient(rgb(164, 16, 223), rgb(251, 255, 197));
-
     color: black;
     min-width: 200px;
 }
@@ -76,4 +75,8 @@ div {
 #btn-clear {
     text-align: center; /* Mengatur teks ke tengah */
     font-size: 24px; /* Ukuran font */
+}
+
+#btn-backspace {
+    text-align: center; /* Mengatur teks ke tengah */
 }
