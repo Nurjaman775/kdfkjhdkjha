@@ -1,82 +1,80 @@
 body {
-    background: linear-gradient(rgb(164,10,222), #C00000);
+    background: linear-gradient(to right, #ebdc09, #1eff00);
     color: white;
-    font-size: 11px;
-    text-align: center;
+    font-size: 16px;
     display: flex;
     justify-content: center;
-    height: 100vh;
     align-items: center;
+    height: 100vh;
+    margin: 0;
 }
-div {
-    /* border: solid 1px red; */
-}
+
 #Kalkulator {
-    border: solid 1px #ccc;
-    padding: 10px;
-    background: linear-gradient(rgb(164, 16, 223), rgb(251, 255, 197));
-    color: black;
-    min-width: 200px;
+    border-radius: 15px;
+    padding: 20px;
+    background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
+    color: #333;
+    width: 250px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
+
+.judul {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#Hasil {
+    font-size: 24px;
+    padding: 15px;
+    background: #ffffff;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+    text-align: right;
+}
+
 .wrapper {
     display: flex;
-    gap: 15px;
-    justify-content: space-between;
-    margin: 10px 0;
-}
-.wrapper div {
-    width: 100%;
-    padding: 5px 10px;
-}
-#btn-hitung {
-    font-size: 22px;
-}
-#Hasil {
-    font-size: 22px;
-}
-#Hasil {
-    background: #D0D0D0;
-}
-#operasi-temporer{
-    font-size: 9px;
+    gap: 10px;
+    margin-bottom: 10px;
 }
 
-#judul {
-    padding: 10px 0;
-}
 .tombol {
-    border: solid 1px #ccc;
-    box-shadow: 0 0 3px gray;
-}
-.tombol-aktif {
-    cursor: pointer;
-    transition: .2s;
-    background: #ccc;
-    padding: 10px 20px;
+    font-size: 18px;
+    padding: 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    flex: 1;
 }
+
 .tombol-aktif:hover {
-    background: linear-gradient(#fcf, #f0f);
-    transform: scale(1.1);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.bg-green {background: #00B050;}
-.bg-dark-brown {background: #4A452A;}
-.bg-brown {background: #974806;}
-.bg-dark-blue {background: #376091;}
-.bg-purpel {background: #7030A0;}
-.bg-red {background: #C00000;}
+.bg-green { background: #00B050; }
+.bg-dark-brown { background: #4A452A; }
+.bg-brown { background: #974806; }
+.bg-dark-blue { background: #376091; }
+.bg-purpel { background: #7030A0; }
+.bg-red { background: #C00000; }
 
-.tombol-nonaktif {
-    box-shadow: none !important;
-}
-
-#btn-clear {
-    text-align: center; /* Mengatur teks ke tengah */
-    font-size: 24px; /* Ukuran font */
+#btn-clear, #btn-hitung {
+    font-size: 24px;
+    text-align: center;
 }
 
 #btn-backspace {
-    text-align: center; /* Mengatur teks ke tengah */
+    text-align: center;
+}
+
+.tombol-aktif:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
