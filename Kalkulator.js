@@ -7,6 +7,7 @@ $(document).ready(function () {
         $('#Hasil').text(currentInput || '0');
     }
 
+    // Fungsi untuk menambahkan angka ke tampilan
     $('.tombol-angka').on('click', function () {
         if (resultDisplayed) {
             currentInput = $(this).text();
@@ -17,6 +18,7 @@ $(document).ready(function () {
         displayResult();
     });
 
+    // Fungsi untuk operasi dasar
     $('.tombol-operasi').on('click', function () {
         const operatorSymbol = $(this).text();
         if (currentInput) {
@@ -25,17 +27,14 @@ $(document).ready(function () {
                 currentInput = currentInput.slice(0, -1);
             }
             if (!currentInput.endsWith(',')) {
-                if (resultDisplayed) {
-                    currentInput = lastResult + ' ' + operatorSymbol + ' ';
-                    resultDisplayed = false;
-                } else {
-                    currentInput += ' ' + operatorSymbol + ' ';
-                }
+                currentInput += ` ${operatorSymbol} `;
+                resultDisplayed = false;
             }
             displayResult();
         }
     });
 
+    // Tombol untuk perhitungan faktorial
     $('.tombol-faktorial').on('click', function () {
         const num = parseInt(currentInput);
         if (!isNaN(num)) {
@@ -50,6 +49,7 @@ $(document).ready(function () {
         return n * factorial(n - 1);
     }
 
+    // Tombol clear dan backspace
     $('#btn-clear').on('click', function () {
         currentInput = '';
         lastResult = null;
@@ -61,6 +61,7 @@ $(document).ready(function () {
         displayResult();
     });
 
+    // Fungsi untuk koma dan tanda negatif
     $('.tombol-aktif.bg-purpel').on('click', function () {
         if (currentInput && !['+', '-', 'x', '/', '%', '^'].includes(currentInput.trim().slice(-1))) {
             if (!currentInput.endsWith(',')) {
@@ -82,16 +83,13 @@ $(document).ready(function () {
         displayResult();
     });
 
+    // Tombol hitung
     $('#btn-hitung').on('click', function () {
         try {
             const expression = currentInput.replace(/x/g, '*').replace(/,/g, '.');
             const result = evalExpression(expression);
             if (result !== null) {
-                if (resultDisplayed) {
-                    currentInput = lastResult + ' + ' + result;
-                } else {
-                    currentInput += ' = ' + result;
-                }
+                currentInput = resultDisplayed ? `${lastResult} + ${result}` : `${currentInput} = ${result}`;
                 lastResult = result;
             } else {
                 currentInput = 'error';
@@ -104,23 +102,18 @@ $(document).ready(function () {
         }
     });
 
+    // Fungsi evaluasi ekspresi dengan operator modulus (%)
     function evalExpression(expr) {
         const parts = expr.split(' ');
 
-        // Proses operator '%' sebagai persentase
+        // Menghitung modulus
         for (let i = 0; i < parts.length; i++) {
             if (parts[i] === '%') {
                 const numberBefore = parseFloat(parts[i - 1]);
-                if (i > 0 && !isNaN(numberBefore)) {
-                    let percentageValue;
-                    if (i + 1 < parts.length && !isNaN(parts[i + 1])) {
-                        const numberAfter = parseFloat(parts[i + 1]);
-                        percentageValue = (numberBefore * numberAfter) / 100;
-                        parts.splice(i - 1, 3, percentageValue);
-                    } else {
-                        percentageValue = numberBefore / 100;
-                        parts.splice(i - 1, 2, percentageValue);
-                    }
+                const numberAfter = parseFloat(parts[i + 1]);
+                if (!isNaN(numberBefore) && !isNaN(numberAfter)) {
+                    const modulusValue = numberBefore % numberAfter;
+                    parts.splice(i - 1, 3, modulusValue);
                     i--;
                 }
             }
@@ -139,6 +132,7 @@ $(document).ready(function () {
             }
         }
 
+        // Evaluasi sisa ekspresi
         let result = eval(parts.join(' '));
         return result;
     }
