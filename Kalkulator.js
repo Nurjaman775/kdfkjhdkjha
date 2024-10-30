@@ -122,12 +122,12 @@ $(document).ready(function () {
                 }
                 lastResult = result; // Simpan hasil terakhir
             } else {
-                currentInput = 'I LOVE YOU 💕🌼😘'; // Set ke 'Error' jika ada masalah
+                currentInput = 'error'; // Set ke 'Error' jika ada masalah
             }
             resultDisplayed = true; // Tandai hasil sudah ditampilkan
             displayResult();
         } catch (e) {
-            currentInput = 'I LOVE YOU 💕🌼😘'; // Set ke 'Error' jika terjadi kesalahan
+            currentInput = 'error'; // Set ke 'Error' jika terjadi kesalahan
             displayResult();
         }
     });
