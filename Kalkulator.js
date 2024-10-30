@@ -102,19 +102,27 @@ $(document).ready(function () {
         }
     });
 
-    // Fungsi evaluasi ekspresi dengan operator modulus (%)
+    // Fungsi evaluasi ekspresi dengan operator modulus dan persentase
     function evalExpression(expr) {
         const parts = expr.split(' ');
 
-        // Menghitung modulus
+        // Menghitung persentase
         for (let i = 0; i < parts.length; i++) {
-            if (parts[i] === '%') {
+            if (parts[i] === '%' && !isNaN(parts[i - 1])) {
                 const numberBefore = parseFloat(parts[i - 1]);
-                const numberAfter = parseFloat(parts[i + 1]);
-                if (!isNaN(numberBefore) && !isNaN(numberAfter)) {
-                    const modulusValue = numberBefore % numberAfter;
-                    parts.splice(i - 1, 3, modulusValue);
-                    i--;
+
+                if (['+', '-', '*', '/'].includes(parts[i - 2])) {
+                    // Menggunakan sebagai persentase (contoh: 5 x 5% = 0.25)
+                    parts[i - 1] = (numberBefore / 100).toString();
+                    parts.splice(i, 1); // Hapus simbol %
+                } else {
+                    // Jika tidak ada operator sebelum angka, gunakan modulus
+                    const numberAfter = parseFloat(parts[i + 1]);
+                    if (!isNaN(numberAfter)) {
+                        const modulusValue = numberBefore % numberAfter;
+                        parts.splice(i - 1, 3, modulusValue);
+                        i--;
+                    }
                 }
             }
         }
